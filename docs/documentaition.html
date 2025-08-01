@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مستندات قالب هاستینگ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
+    body {
+      font-family: 'Vazir', Tahoma, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+    }
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 250px;
+      background-color: #2c3e50;
+      padding-top: 2rem;
+      color: #fff;
+      overflow-y: auto;
+      box-shadow: -3px 0 6px rgba(0,0,0,0.1);
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #bdc3c7;
+      text-decoration: none;
+      font-weight: 600;
+      border-right: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #34495e;
+      color: #fff;
+      border-right-color: #e67e22;
+    }
+    main.content {
+      margin-right: 250px;
+      padding: 2rem 3rem;
+      max-width: 900px;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    pre {
+      background: #ecf0f1;
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      color: #2c3e50;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background: #f4f6f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 1rem 0;
+      }
+      main.content {
+        margin: 0;
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar" aria-label="منوی مستندات">
+    <a href="#introduction" class="active">معرفی قالب</a>
+    <a href="#installation">نصب و راه‌اندازی</a>
+    <a href="#usage">نحوه استفاده</a>
+    <a href="#customization">شخصی‌سازی</a>
+    <a href="#support">پشتیبانی</a>
+  </nav>
+
+  <main class="content" role="main">
+    <section id="introduction">
+      <h1>معرفی قالب هاستینگ</h1>
+      <p>این قالب به‌صورت کامل و حرفه‌ای برای سایت‌های هاستینگ طراحی شده است تا بتوانید با ظاهری زیبا و امکانات کافی، سایت خود را راه‌اندازی کنید.</p>
+    </section>
+
+    <section id="installation">
+      <h2>نصب و راه‌اندازی</h2>
+      <p>برای نصب قالب، کافیست فایل‌های قالب را در پوشه اصلی وب‌سرور خود آپلود کنید و سپس از طریق مرورگر به آدرس سایت مراجعه نمایید.</p>
+      <pre><code>ftp upload / your hosting root folder</code></pre>
+      <p>اطمینان حاصل کنید که پوشه <code>assets</code> و فایل‌های CSS و JS به درستی بارگذاری شده باشند.</p>
+    </section>
+
+    <section id="usage">
+      <h2>نحوه استفاده</h2>
+      <p>قالب شامل صفحات مختلفی مانند صفحه اصلی، داشبورد کاربری، ورود و ثبت‌نام، جزئیات سرویس و ... می‌باشد که هر کدام عملکرد مشخصی دارند.</p>
+      <ul>
+        <li><strong>صفحه اصلی:</strong> معرفی خدمات و جلب توجه کاربر.</li>
+        <li><strong>داشبورد کاربری:</strong> مدیریت سرویس‌ها و مشاهده وضعیت حساب.</li>
+        <li><strong>ورود / ثبت‌نام:</strong> مدیریت حساب کاربری.</li>
+        <li><strong>صفحه ۴۰۴:</strong> نمایش خطای صفحه پیدا نشد با انیمیشن حرفه‌ای.</li>
+      </ul>
+    </section>
+
+    <section id="customization">
+      <h2>شخصی‌سازی قالب</h2>
+      <p>برای تغییر رنگ‌ها، فونت‌ها و تصاویر قالب می‌توانید فایل <code>assets/css/style.css</code> را ویرایش کنید یا بخش‌های HTML را مطابق نیاز خود تغییر دهید.</p>
+      <p>همچنین می‌توانید انیمیشن‌ها و اسکریپت‌های جاوااسکریپت را به دلخواه اضافه یا تغییر دهید.</p>
+    </section>
+
+    <section id="support">
+      <h2>پشتیبانی</h2>
+      <p>برای دریافت پشتیبانی و راهنمایی بیشتر، لطفا با ایمیل <a href="mailto:support@hostingtemplate.ir">afshin131111@gmail.com</a> تماس بگیرید.</p>
+    </section>
+  </main>
+
+  <script>
+    // فعال کردن کلاس active برای منوی کناری با کلیک و اسکرول
+    const sections = document.querySelectorAll('main.content section');
+    const navLinks = document.querySelectorAll('.sidebar a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 60;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // scroll smooth
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetID = link.getAttribute('href').substring(1);
+        document.getElementById(targetID).scrollIntoView({behavior: 'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>

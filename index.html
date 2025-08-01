@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hosting Pro</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <!-- داخل <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- قبل </body> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <style>
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .hero {
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .pricing-card {
+      transition: all 0.3s ease-in-out;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+    body.dark-mode .navbar {
+      background-color: #1f1f1f !important;
+    }
+    body.dark-mode .nav-link,
+    body.dark-mode .navbar-brand {
+      color: #ddd !important;
+    }
+    body.dark-mode .dropdown-menu {
+      background-color: #2c2c2c;
+      color: #ddd;
+    }
+    body.dark-mode .dropdown-item {
+      color: #ddd;
+    }
+    body.dark-mode .dropdown-item:hover {
+      background-color: #444;
+    }
+    body.dark-mode .card {
+      background-color: #222;
+      border-color: #444;
+    }
+    body.dark-mode .card .text-muted {
+      color: #bbb !important;
+    }
+    body.dark-mode .btn-outline-primary {
+      color: #ddd;
+      border-color: #555;
+    }
+    body.dark-mode .btn-outline-primary:hover {
+      background-color: #555;
+      color: #fff;
+    }
+    body.dark-mode .btn-primary {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: white;
+    }
+
+    /* RTL */
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+    }
+    body.rtl .navbar-nav {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    body.rtl .form-control {
+      text-align: right;
+    }
+      #scrollTopBtn {
+    display: none; /* اول مخفی */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  #scrollTopBtn:hover {
+    background-color: #333;
+  }
+     
+  </style>
+</head>
+<body>
+
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand bg-glass sticky-top shadow-sm py-2">
+  <div class="container-fluid align-items-center">
+
+    <!-- لوگو -->
+    <a class="navbar-brand fw-bold text-white" href="#">هاستینگ پرو</a>
+
+    <!-- دکمه‌های راست -->
+    <div class="d-flex align-items-center gap-2">
+      <button id="langToggle" class="btn btn-outline-light btn-sm">FA / EN</button>
+      <button id="themeToggle" class="btn btn-outline-light btn-sm">🌙 / ☀️</button>
+    </div>
+  </div>
+
+  <!-- نوار منو با دکمه اسکرول -->
+  <div class="nav-scroll-wrapper mt-2 px-3">
+    <button class="scroll-btn left" onclick="scrollNav(-100)">‹</button>
+
+    <div class="nav-scroll-items">
+      <a href="#home" class="nav-link text-white">خانه</a>
+      <a href="dashboard.html" class="nav-link text-white">داشبورد کاربری</a>
+      <a href="404.html" class="nav-link text-white">صفحه 404</a>
+
+
+      <a href="#plans" class="nav-link text-white">پلن‌ها</a>
+      <a href="#counters" class="nav-link text-white">آمار</a>
+      <a href="#about" class="nav-link text-white">درباره ما</a>
+      <a href="#testimonials" class="nav-link text-white">نظرات</a>
+      <a href="#contact" class="nav-link text-white">تماس با ما</a>
+    </div>
+
+    <button class="scroll-btn right" onclick="scrollNav(100)">›</button>
+  </div>
+</nav>
+<style>
+  .bg-glass {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+  }
+
+  .nav-scroll-items {
+    overflow-x: auto;
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    scroll-behavior: smooth;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: background 0.3s;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .scroll-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    cursor: pointer;
+    z-index: 2;
+    height: 100%;
+  }
+
+  .scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .scroll-btn.left {
+    order: -1;
+  }
+
+  /* اسکرول مخفی در همه مرورگرها */
+  .nav-scroll-items::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-scroll-items {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+#changing-text::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  color: #666;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+  /* استایل لودینگ تمام صفحه */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background-color: #3a86ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    #loading-screen img {
+      width: 120px;
+      height: 120px;
+      animation: pulse 5s infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+      }
+    }
+    #loading-screen .loading-text {
+      color: white;
+      font-family: 'Vazir', Tahoma, sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    /* صفحه اصلی (مخفی نیست) */
+    #main-content {
+      display: none; /* اول مخفی */
+    }
+    #main-content.visible {
+      display: block; /* وقتی لودینگ رفت، نمایش داده میشه */
+    }
+</style>
+<script>
+  function scrollNav(offset) {
+    document.querySelector(".nav-scroll-items").scrollLeft += offset;
+  }
+</script>
+
+
+<!-- Hero Section -->
+<section class="hero py-5 text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3" id="changing-text"></h1>
+    <p class="lead mb-4" id="hero-subtitle">هاست ابری پرسرعت با امنیت کامل</p>
+    <form class="d-flex justify-content-center" role="search">
+      <input class="form-control w-50 me-2 text-end" type="search" placeholder="جستجوی سرویس..." id="liveSearchInput" />
+    </form>
+    <div id="searchResults" class="mt-3 text-muted small"></div>
+  </div>
+</section>
+
+
+  <!-- لودینگ -->
+  <div id="loading-screen" role="alert" aria-live="assertive">
+    <img src="https://i.gifer.com/ZZ5H.gif" alt="لودینگ..." />
+    <div class="loading-text">در حال بارگذاری...</div>
+  </div>
+
+
+<!-- About Us -->
+<section class="py-5 text-center bg-white" id="about">
+  <div class="container">
+    <h2 class="mb-4" id="about-title">About Us</h2>
+    <div id="typed-text" class="lead text-muted" style="min-height: 50px;"></div>
+  </div>
+</section>
+
+<!-- Counters -->
+<section id="counters" class="py-5 bg-dark text-white">
+  <div class="container">
+    <h2 class="text-center mb-4">آمار ما</h2>
+    <div class="swiper counterSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide text-center">
+          <h2 class="counter" data-count="5000">0</h2>
+          <p>مشتری فعال</p>
+        </div>
+        <div class="swiper-slide text-center">
+          <h2 class="counter" data-count="1200">0</h2>
+          <p>پروژه‌ها</p>
+        </div>
+        <div class="swiper-slide text-center">
+          <h2 class="counter" data-count="99.9">0</h2>
+          <p>آپ‌تایم سرورها</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const counterSwiper = new Swiper(".counterSwiper", {
+    loop: true,
+    slidesPerView: 1,
+    autoplay: { delay: 3000 },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 }
+    }
+  });
+
+  const counters = document.querySelectorAll(".counter");
+  counters.forEach(counter => {
+    const animate = () => {
+      const target = +counter.dataset.count;
+      const step = target / 100;
+      let current = 0;
+      const update = () => {
+        current += step;
+        if (current < target) {
+          counter.innerText = Math.floor(current);
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      update();
+    };
+    animate();
+  });
+</script>
+
+
+<!-- Testimonials -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">نظرات مشتریان</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- کارت نظر مشتری -->
+        <div class="swiper-slide">
+          <div class="card p-4 shadow text-center">
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+            <p>"پشتیبانی سریع و کیفیت بالا. عالی بود!"</p>
+            <h6 class="mt-3 text-primary">علی رضایی</h6>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card p-4 shadow text-center">
+            <p>⭐️⭐️⭐️⭐️</p>
+            <p>"قیمت مناسب و uptime خوب، پیشنهاد می‌کنم."</p>
+            <h6 class="mt-3 text-primary">مینا تهرانی</h6>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card p-4 shadow text-center">
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+            <p>"بهترین تجربه‌ی خرید هاست داشتم."</p>
+            <h6 class="mt-3 text-primary">سعید فرجی</h6>
+          </div>
+        </div>
+      </div>
+      <!-- دکمه‌های اسلاید -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    autoplay: { delay: 4000 },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 }
+    }
+  });
+</script>
+
+<!-- Partners -->
+<section id="partners" class="bg-light py-5">
+  <div class="container text-center">
+    <h2>Our Team</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+      <div class="text-center">
+        <img src="dev1.avif" alt="Dev 1" class="rounded-circle" style="width:120px;height:120px;">
+        <p class="mt-2">Dev 1</p>
+      </div>
+      <div class="text-center">
+        <img src="pexels-djordje-petrovic-590080-2102415.jpg" alt="Dev 2" class="rounded-circle" style="width:120px;height:120px;">
+        <p class="mt-2">Dev 2</p>
+      </div>
+      <div class="text-center">
+        <img src="pexels-hiteshchoudhary-879109.jpg" alt="Dev 3" class="rounded-circle" style="width:120px;height:120px;">
+        <p class="mt-2">Dev 3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plans" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 id="plans-title" data-lang-fa="پلن‌های ما" data-lang-en="Our Plans">پلن‌های ما</h2>
+    <div class="row mt-4">
+      <!-- پلن پایه -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow h-100">
+          <div class="card-body">
+            <h4 class="card-title" data-lang-fa="پلن پایه" data-lang-en="Basic Plan">پلن پایه</h4>
+            <ul class="list-unstyled">
+              <li data-lang-fa="فضا: 10 گیگابایت" data-lang-en="Storage: 10 GB">فضا: 10 گیگابایت</li>
+              <li data-lang-fa="پهنای باند: 100 گیگابایت" data-lang-en="Bandwidth: 100 GB">پهنای باند: 100 گیگابایت</li>
+              <li data-lang-fa="ایمیل: 1 عدد" data-lang-en="Email: 1 Account">ایمیل: 1 عدد</li>
+              <li data-lang-fa="دامنه رایگان: ندارد" data-lang-en="Free Domain: No">دامنه رایگان: ندارد</li>
+            </ul>
+            <h5 class="price mt-3" data-price-riyal="1500000" data-price-usd="3">$3 / 1,500,000 ریال</h5>
+            <a href="#" class="btn btn-outline-primary mt-3" data-lang-fa="خرید پلن" data-lang-en="Buy Plan">خرید پلن</a>
+          </div>
+        </div>
+      </div>
+      <!-- پلن حرفه‌ای -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow h-100 border-primary">
+          <div class="card-body">
+            <h4 class="card-title text-primary" data-lang-fa="پلن حرفه‌ای" data-lang-en="Pro Plan">پلن حرفه‌ای</h4>
+            <ul class="list-unstyled">
+              <li data-lang-fa="فضا: 50 گیگابایت" data-lang-en="Storage: 50 GB">فضا: 50 گیگابایت</li>
+              <li data-lang-fa="پهنای باند: نامحدود" data-lang-en="Bandwidth: Unlimited">پهنای باند: نامحدود</li>
+              <li data-lang-fa="ایمیل: 10 عدد" data-lang-en="Email: 10 Accounts">ایمیل: 10 عدد</li>
+              <li data-lang-fa="دامنه رایگان: 1 عدد" data-lang-en="Free Domain: 1">دامنه رایگان: 1 عدد</li>
+            </ul>
+            <h5 class="price mt-3" data-price-riyal="4500000" data-price-usd="9">$9 / 4,500,000 ریال</h5>
+            <a href="#" class="btn btn-outline-primary mt-3" data-lang-fa="خرید پلن" data-lang-en="Buy Plan">خرید پلن</a>
+          </div>
+        </div>
+      </div>
+      <!-- پلن سازمانی -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow h-100">
+          <div class="card-body">
+            <h4 class="card-title" data-lang-fa="پلن سازمانی" data-lang-en="Enterprise Plan">پلن سازمانی</h4>
+            <ul class="list-unstyled">
+              <li data-lang-fa="فضا: 200 گیگابایت" data-lang-en="Storage: 200 GB">فضا: 200 گیگابایت</li>
+              <li data-lang-fa="پهنای باند: نامحدود" data-lang-en="Bandwidth: Unlimited">پهنای باند: نامحدود</li>
+              <li data-lang-fa="ایمیل: نامحدود" data-lang-en="Email: Unlimited">ایمیل: نامحدود</li>
+              <li data-lang-fa="دامنه رایگان: 2 عدد" data-lang-en="Free Domain: 2">دامنه رایگان: 2 عدد</li>
+            </ul>
+            <h5 class="price mt-3" data-price-riyal="9500000" data-price-usd="19">$19 / 9,500,000 ریال</h5>
+            <a href="#" class="btn btn-outline-primary mt-3" data-lang-fa="خرید پلن" data-lang-en="Buy Plan">خرید پلن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact" class="py-5" style="background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085') center/cover no-repeat;">
+  <div class="container">
+    <h2 class="text-center text-white mb-5" data-lang-fa="تماس با ما" data-lang-en="Contact Us">تماس با ما</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form class="glass-form p-5 rounded-4 shadow-lg text-white">
+          <div class="mb-4">
+            <label for="name" class="form-label" data-lang-fa="نام کامل" data-lang-en="Full Name">نام کامل</label>
+            <input type="text" class="form-control form-control-lg glass-input" id="name" placeholder="مثلاً علی رضایی">
+          </div>
+          <div class="mb-4">
+            <label for="email" class="form-label" data-lang-fa="ایمیل" data-lang-en="Email">ایمیل</label>
+            <input type="email" class="form-control form-control-lg glass-input" id="email" placeholder="your@example.com">
+          </div>
+          <div class="mb-4">
+            <label for="subject" class="form-label" data-lang-fa="موضوع" data-lang-en="Subject">موضوع</label>
+            <input type="text" class="form-control form-control-lg glass-input" id="subject" placeholder="مثلاً سفارش هاست">
+          </div>
+          <div class="mb-4">
+            <label for="message" class="form-label" data-lang-fa="پیام" data-lang-en="Message">پیام</label>
+            <textarea class="form-control form-control-lg glass-input" id="message" rows="5" placeholder="متن پیام شما..."></textarea>
+          </div>
+          <div class="text-end">
+            <button type="submit" class="btn btn-light px-4 py-2 fw-bold" data-lang-fa="ارسال" data-lang-en="Send">ارسال</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .glass-form {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    border-radius: 12px;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glass-form {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-input {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  .dark .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>
+
+
+<!-- Footer 4 parts -->
+<footer class="bg-light text-dark py-5 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-3">
+        <h5 id="footer-about-title">About Hosting Pro</h5>
+        <p id="footer-about-text">We provide premium cloud hosting solutions for your business.</p>
+      </div>
+      <div class="col-md-3">
+        <h5 id="footer-links-title">Quick Links</h5>
+        <ul class="list-unstyled" id="footer-links-list">
+          <li><a href="#plans" class="text-decoration-none" data-key="plans">Plans</a></li>
+          <li><a href="#features" class="text-decoration-none" data-key="features">Features</a></li>
+          <li><a href="#contact" class="text-decoration-none" data-key="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 id="footer-contact-title">Contact Info</h5>
+        <ul class="list-unstyled" id="footer-contact-list">
+          <li>Phone: 09365016910</li>
+          <li>Email: afshin131111@gmail.com</li>
+          <li>Address: تهران</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 id="footer-trust-title">Trusted By</h5>
+<div class="d-flex gap-2 justify-content-center align-items-center">
+  <img src="https://www.svgrepo.com/show/329593/enamad.svg" alt="Enamad" style="height:60px;">
+  <img src="https://www.svgrepo.com/show/329819/zarinpal.svg" alt="Zarinpal" style="height:60px;">
+</div>
+
+      </div>
+    </div>
+    <hr class="my-4" />
+    <p class="text-center mb-0">&copy; 2025 Hosting Pro. All rights reserved.</p>
+  </div>
+</footer>
+<button id="scrollTopBtn" title="برو بالا">▲</button>
+
+
+
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  // داده‌های زبان‌ها
+  const langData = {
+    en: {
+      navBrand: "Hosting Pro",
+      navLinks: { plans: "Plans", features: "Features", contact: "Contact" },
+      heroSubtitle: "High-speed cloud hosting with complete security",
+      aboutTitle: "About Us",
+      typedText: "We provide premium cloud hosting solutions for all your business needs.",
+      achievementsTitle: "Hosting Achievements",
+      activeCustomers: "Active Customers",
+      hostedWebsites: "Hosted Websites",
+      uptime: "Actual Uptime",
+      support: "24/7 Support",
+      testimonialsTitle: "Customer Testimonials",
+      testimonial1: '"Excellent support and great speed. Thanks Hosting Pro!"',
+      testimonial1Author: "Alireza, Developer",
+      testimonial2: '"I host my store website here without worries."',
+      testimonial2Author: "Zahra, Web Designer",
+      testimonial3: '"Good quality and reasonable prices."',
+      testimonial3Author: "Mojtaba, Entrepreneur",
+      partnersTitle: "Our Partners",
+      plansTitle: "Hosting Plans",
+      planBasicTitle: "Basic",
+      planBasicDesc: "Great for small websites",
+      planStandardTitle: "Standard",
+      planStandardDesc: "Ideal for growing sites",
+      planPremiumTitle: "Premium",
+      planPremiumDesc: "For high-traffic websites",
+      planBasicBtn: "Order Now",
+      planStandardBtn: "Order Now",
+      planPremiumBtn: "Order Now",
+      contactTitle: "Contact Us",
+      contactName: "Name",
+      contactEmail: "Email",
+      contactMessage: "Your message",
+      contactSendBtn: "Send Message",
+      footerAboutTitle: "About Hosting Pro",
+      footerAboutText: "We provide premium cloud hosting solutions for your business.",
+      footerLinksTitle: "Quick Links",
+      footerContactTitle: "Contact Info",
+      footerLinksList: ["Plans", "Features", "Contact"],
+      footerTrustTitle: "Trusted By"
+    },
+    fa: {
+      navBrand: "هاستینگ پرو",
+      navLinks: { plans: "پلن‌ها", features: "ویژگی‌ها", contact: "تماس" },
+      heroSubtitle: "هاستینگ ابری پرسرعت با امنیت کامل",
+      aboutTitle: "درباره ما",
+      typedText: "ما راهکارهای میزبانی ابری باکیفیت را برای تمام کسب‌وکارها فراهم می‌کنیم.",
+      achievementsTitle: "دستاوردهای هاستینگ",
+      activeCustomers: "مشتریان فعال",
+      hostedWebsites: "وب‌سایت‌های میزبانی شده",
+      uptime: "آپ‌تایم واقعی",
+      support: "پشتیبانی ۲۴/۷",
+      testimonialsTitle: "نظرات مشتریان",
+      testimonial1: "«پشتیبانی عالی و سرعت فوق‌العاده. ممنون هاستینگ پرو!»",
+      testimonial1Author: "علیرضا، توسعه‌دهنده",
+      testimonial2: "«وب‌سایت فروشگاهی خودم را اینجا بدون دغدغه میزبانی می‌کنم.»",
+      testimonial2Author: "زهرا، طراح وب",
+      testimonial3: "«کیفیت خوب و قیمت مناسب.»",
+      testimonial3Author: "مجتبی، کارآفرین",
+      partnersTitle: "همکاران ما",
+      plansTitle: "پلن‌های هاستینگ",
+      planBasicTitle: "پایه",
+      planBasicDesc: "مناسب برای سایت‌های کوچک",
+      planStandardTitle: "استاندارد",
+      planStandardDesc: "مناسب برای سایت‌های در حال رشد",
+      planPremiumTitle: "پریمیوم",
+      planPremiumDesc: "برای سایت‌های پر ترافیک",
+      planBasicBtn: "سفارش دهید",
+      planStandardBtn: "سفارش دهید",
+      planPremiumBtn: "سفارش دهید",
+      contactTitle: "تماس با ما",
+      contactName: "نام",
+      contactEmail: "ایمیل",
+      contactMessage: "پیام شما",
+      contactSendBtn: "ارسال پیام",
+      footerAboutTitle: "درباره هاستینگ پرو",
+      footerAboutText: "ما راهکارهای میزبانی ابری باکیفیت را برای کسب‌وکار شما فراهم می‌کنیم.",
+      footerLinksTitle: "لینک‌های سریع",
+      footerContactTitle: "اطلاعات تماس",
+      footerLinksList: ["پلن‌ها", "ویژگی‌ها", "تماس"],
+      footerTrustTitle: "مورد اعتماد"
+    }
+  };
+
+  // المنت‌هایی که باید ترجمه شوند
+  const elementsToTranslate = {
+    navBrand: "nav-brand",
+    plans: "plans",
+    features: "features",
+    contact: "contact",
+    heroSubtitle: "hero-subtitle",
+    aboutTitle: "about-title",
+    typedText: "typed-text",
+    achievementsTitle: "achievements-title",
+    activeCustomers: "active-customers",
+    hostedWebsites: "hosted-websites",
+    uptime: "uptime",
+    support: "support",
+    testimonialsTitle: "testimonials-title",
+    testimonial1: "testimonial1",
+    testimonial1Author: "testimonial1-author",
+    testimonial2: "testimonial2",
+    testimonial2Author: "testimonial2-author",
+    testimonial3: "testimonial3",
+    testimonial3Author: "testimonial3-author",
+    partnersTitle: "partners-title",
+    plansTitle: "plans-title",
+    planBasicTitle: "plan-basic-title",
+    planBasicDesc: "plan-basic-desc",
+    planStandardTitle: "plan-standard-title",
+    planStandardDesc: "plan-standard-desc",
+    planPremiumTitle: "plan-premium-title",
+    planPremiumDesc: "plan-premium-desc",
+    planBasicBtn: "plan-basic-btn",
+    planStandardBtn: "plan-standard-btn",
+    planPremiumBtn: "plan-premium-btn",
+    contactTitle: "contact-title",
+    contactName: "contact-name",
+    contactEmail: "contact-email",
+    contactMessage: "contact-message",
+    contactSendBtn: "contact-send-btn",
+    footerAboutTitle: "footer-about-title",
+    footerAboutText: "footer-about-text",
+    footerLinksTitle: "footer-links-title",
+    footerContactTitle: "footer-contact-title",
+    footerTrustTitle: "footer-trust-title"
+  };
+
+
+
+  // المنت‌های لینک‌های فوتر برای ترجمه لیست
+  const footerLinksElements = document.querySelectorAll("#footer-links-list li a");
+
+  // تنظیم جهت متن و lang صفحه
+  function setDirection(isFarsi) {
+    if (isFarsi) {
+      document.documentElement.lang = "fa";
+      document.body.classList.add("rtl");
+      document.body.setAttribute("dir", "rtl");
+    } else {
+      document.documentElement.lang = "en";
+      document.body.classList.remove("rtl");
+      document.body.setAttribute("dir", "ltr");
+    }
+  }
+
+  // تابع ترجمه صفحه
+  function translatePage(lang) {
+    const data = langData[lang];
+    // ترجمه متن‌ها
+    for (const key in elementsToTranslate) {
+      const el = document.getElementById(elementsToTranslate[key]);
+      if (!el) continue;
+      let text = data[key];
+      if (!text) continue;
+
+      // اگر المنت ورودی یا تکست‌اریا بود placeholder را تنظیم کن
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
+    }
+
+    // ترجمه لینک‌های فوتر
+    footerLinksElements.forEach((link, idx) => {
+      link.textContent = data.footerLinksList[idx] || link.textContent;
+    });
+
+    // تنظیم جهت متن و lang
+    setDirection(lang === "fa");
+
+    // تغییر متن دکمه زبان
+    document.getElementById("langToggle").textContent = lang === "fa" ? "EN" : "FA";
+  }
+
+  // مدیریت تغییر زبان با دکمه
+  const langToggleBtn = document.getElementById("langToggle");
+  let currentLang = "en";
+
+  langToggleBtn.addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "fa" : "en";
+    translatePage(currentLang);
+  });
+
+  // تایپ متن درباره ما (افکت تایپ)
+  function typeText(element, text, speed = 50) {
+    element.textContent = "";
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, speed);
+  }
+
+  // شروع صفحه با زبان انگلیسی و تایپ متن درباره ما
+  document.addEventListener("DOMContentLoaded", () => {
+    translatePage(currentLang);
+    const typedTextEl = document.getElementById("typed-text");
+    typeText(typedTextEl, langData[currentLang].typedText);
+  });
+
+  // تغییر متن تایپ شده هنگام تغییر زبان
+  langToggleBtn.addEventListener("click", () => {
+    const typedTextEl = document.getElementById("typed-text");
+    typeText(typedTextEl, langData[currentLang].typedText);
+  });
+
+  // دکمه تغییر تم تاریک/روشن
+  const themeToggleBtn = document.getElementById("themeToggle");
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+      themeToggleBtn.textContent = "☀️";
+    } else {
+      themeToggleBtn.textContent = "🌙";
+    }
+  });
+ 
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let count = 0;
+      const increment = target / 200;
+
+      function update() {
+        count += increment;
+        if (count < target) {
+          counter.textContent = (target % 1 !== 0) ? count.toFixed(1) : Math.floor(count);
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = (target % 1 !== 0) ? target.toFixed(1) : target;
+        }
+      }
+      update();
+    });
+  });
+</script>
+<script>
+  function formatPrice(price, currency) {
+    return currency === "fa" ? price.toLocaleString("fa-IR") + " ریال" : "$" + price;
+  }
+
+  function updatePrices(lang) {
+    document.querySelectorAll(".price").forEach(el => {
+      const riyal = parseInt(el.dataset.priceRiyal);
+      const usd = parseFloat(el.dataset.priceUsd);
+      el.textContent = lang === "fa" ? `${formatPrice(riyal, "fa")} / $${usd}` : `$${usd} / ${formatPrice(riyal, "fa")}`;
+    });
+  }
+
+  function translateElements(lang) {
+    document.querySelectorAll("[data-lang-fa]").forEach(el => {
+      el.textContent = lang === "fa" ? el.dataset.langFa : el.dataset.langEn;
+    });
+    updatePrices(lang);
+  }
+
+  let currentLang = "fa";
+  document.getElementById("langToggle").addEventListener("click", () => {
+    currentLang = currentLang === "fa" ? "en" : "fa";
+    translateElements(currentLang);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    translateElements(currentLang);
+  });
+</script>
+ <script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  // وقتی صفحه به اندازه مشخصی اسکرول شد، دکمه نمایش داده شود
+  window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+
+  // وقتی روی دکمه کلیک شد، به آرامی به بالا برگرد
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+</script> 
+<script>
+const phrases = [
+  "هاست ابری پرسرعت",
+  "امنیت داده‌ها در سطح جهانی",
+  "پشتیبانی ۲۴ ساعته",
+  "مقیاس‌پذیری آسان و سریع",
+  "گارانتی آپتایم ۹۹.۹۹٪"
+];
+
+let currentPhraseIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+const textElement = document.getElementById("changing-text");
+
+function typeEffect() {
+  const currentPhrase = phrases[currentPhraseIndex];
+  const currentText = currentPhrase.slice(0, currentCharIndex);
+
+  textElement.textContent = currentText;
+
+  if (!isDeleting) {
+    if (currentCharIndex < currentPhrase.length) {
+      currentCharIndex++;
+    } else {
+      isDeleting = true;
+      setTimeout(typeEffect, 1800); // زمان مکث بعد از کامل شدن جمله
+      return;
+    }
+  } else {
+    if (currentCharIndex > 0) {
+      currentCharIndex--;
+    } else {
+      isDeleting = false;
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+    }
+  }
+
+  const typingSpeed = isDeleting ? 50 : 100;
+  setTimeout(typeEffect, typingSpeed);
+}
+
+// شروع
+typeEffect();
+</script>
+
+
+  <script>
+    // تا 4 ثانیه نمایش لودینگ، بعد مخفی و صفحه اصلی نمایش داده بشه
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+          mainContent.classList.add('visible');
+        }, 1000); // مطابق transition 1 ثانیه
+      }, 4000); // 4 ثانیه لودینگ نمایش داده میشه
+    });
+  </script>
+
+</body>
+</html>
